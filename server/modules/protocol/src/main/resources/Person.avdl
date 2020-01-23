@@ -1,4 +1,4 @@
-@namespace("com.fortysevendeg.mu-Hello.server.protocol")
+@namespace("com.fortysevendeg.muHello.server.protocol")
 protocol Person {
 
 
@@ -7,6 +7,14 @@ protocol Person {
     string name;
     string category;
 
+  }
+
+  record HelloPersonStrRPC {
+    string message;
+  }
+
+  record HelloStr {
+    string message;
   }
 
 
