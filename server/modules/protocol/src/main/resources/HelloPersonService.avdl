@@ -1,0 +1,9 @@
+@namespace("com.fortysevendeg.mu-Hello.server.protocol")
+protocol HelloPersonService {
+  import idl "Person.avdl";
+
+  string sayHelloTo(com.fortysevendeg.mu-Hello.server.protocol.PersonRPC person);
+
+  string justSayHello();
+
+}

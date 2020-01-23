@@ -1,0 +1,14 @@
+@namespace("com.fortysevendeg.mu-Hello.server.protocol")
+protocol Person {
+
+
+  record PersonRPC {
+
+    string name;
+    string category;
+
+  }
+
+
+
+}
