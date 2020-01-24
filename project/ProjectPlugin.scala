@@ -85,6 +85,7 @@ object ProjectPlugin extends AutoPlugin {
         "-Ywarn-value-discard",
         "-Xfuture",
         "-Ywarn-unused-import",
+        "-Ypartial-unification",
         "-P:silencer:pathFilters=target"
       )
     )
