@@ -1,10 +1,11 @@
 package com.fortysevendeg.muHello.server.app
 
-import cats.effect.{ConcurrentEffect, ContextShift, Effect, ExitCode, IO, Sync, Timer}
+import cats.effect._
 import cats.implicits._
 import com.fortysevendeg.muHello.server.process.HelloPersonServiceImpl
 import com.fortysevendeg.muHello.server.protocol._
 import higherkindness.mu.rpc.server.{AddService, GrpcServer}
+import com.fortysevendeg.muHello.server.protocol.HelloPersonService
 
 import scala.concurrent.ExecutionContext
 
