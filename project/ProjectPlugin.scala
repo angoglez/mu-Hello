@@ -9,12 +9,13 @@ object ProjectPlugin extends AutoPlugin {
   object autoImport {
 
     lazy val V = new {
-      val log4cats      = "1.0.1"
-      val muRPC         = "0.19.0"
-      val macroParadise = "2.1.1"
-      val console4cats  = "0.8.0-M1"
-      val silencer      = "1.4.3"
-      val pureconfig    = "0.12.1"
+      val log4cats         = "1.0.1"
+      val muRPC            = "0.19.0"
+      val macroParadise    = "2.1.1"
+      val console4cats     = "0.8.0-M1"
+      val silencer         = "1.4.3"
+      val pureconfig       = "0.12.1"
+      val betterMonadicFor = "0.3.1"
     }
   }
 
@@ -44,7 +45,9 @@ object ProjectPlugin extends AutoPlugin {
   lazy val serverAppSettings: Seq[Def.Setting[_]] = logSettings ++ Seq(
     libraryDependencies ++= Seq(
       "io.higherkindness"     %% "mu-rpc-server" % V.muRPC,
-      "com.github.pureconfig" %% "pureconfig"    % V.pureconfig)
+      "com.github.pureconfig" %% "pureconfig"    % V.pureconfig,
+      "io.higherkindness"     %% "mu-config"     % V.muRPC
+    )
   )
 
   //////////////////////////
@@ -56,16 +59,22 @@ object ProjectPlugin extends AutoPlugin {
   lazy val clientProcessSettings: Seq[Def.Setting[_]] = logSettings ++ Seq(
     libraryDependencies ++= Seq("io.higherkindness" %% "mu-rpc-netty" % V.muRPC))
 
-  lazy val clientAppSettings: Seq[Def.Setting[_]] = logSettings
+  lazy val clientAppSettings: Seq[Def.Setting[_]] = logSettings ++ Seq(
+    libraryDependencies +=
+      "io.higherkindness" %% "mu-config" % V.muRPC
+  )
 
   override def projectSettings: Seq[Def.Setting[_]] =
     Seq(
       libraryDependencies ++=
-        Seq("com.github.ghik" % "silencer-lib" % V.silencer % Provided cross CrossVersion.full,
-          "io.higherkindness" %% "mu-common" % "0.19.0"),
+        Seq(
+          "com.github.ghik"   % "silencer-lib" % V.silencer % Provided cross CrossVersion.full,
+          "io.higherkindness" %% "mu-common"   % V.muRPC,
+          "io.higherkindness" %% "mu-config"   % V.muRPC
+        ),
       addCompilerPlugin("org.scalamacros" % "paradise"            % V.macroParadise cross CrossVersion.full),
       addCompilerPlugin("com.github.ghik" % "silencer-plugin"     % V.silencer cross CrossVersion.full),
-      addCompilerPlugin("com.olegpy"      %% "better-monadic-for" % "0.3.1"),
+      addCompilerPlugin("com.olegpy"      %% "better-monadic-for" % V.betterMonadicFor),
       scalaVersion := "2.12.10",
       name := "mu-Hello",
       version := "0.1",
