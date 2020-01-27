@@ -10,11 +10,11 @@ object ProjectPlugin extends AutoPlugin {
 
     lazy val V = new {
       val log4cats         = "1.0.1"
-      val muRPC            = "0.19.0"
+      val muRPC            = "0.20.1"
       val macroParadise    = "2.1.1"
       val console4cats     = "0.8.0-M1"
       val silencer         = "1.4.3"
-      val pureconfig       = "0.12.1"
+      val pureconfig       = "0.12.2"
       val betterMonadicFor = "0.3.1"
     }
   }
