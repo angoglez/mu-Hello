@@ -10,7 +10,7 @@ class ClientProgram[F[_]: ConcurrentEffect: ContextShift](client: HelloPersonSer
     extends HelloClient[F] {
 
   val p1 = PersonRPC("Anita", "Junior Scala Software Engineer")
-  val p2 = PersonRPC("Enrique", "Super Compendium Mantainer")
+  val p2 = PersonRPC("Enrique", "Super Compendium Maintainer")
 
   def sayHelloTo(person: PersonRPC): F[HelloPersonStrRPC] = client.sayHelloTo(person)
 
