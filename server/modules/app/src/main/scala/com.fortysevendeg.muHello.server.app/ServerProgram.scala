@@ -16,7 +16,6 @@ class ServerProgram[F[_]: ConcurrentEffect: ContextShift: Timer] {
     implicit val helloPersonServiceHandler: HelloPersonServiceImpl[F] =
       new HelloPersonServiceImpl[F]
 
-    val serverName = "HelloServer"
     val configPort = 19683
 
     for {
